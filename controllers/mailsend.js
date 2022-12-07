@@ -32,7 +32,7 @@ exports.mailsend = (req, res) => {
       data.push(res);
     });
   }
-  console.log(data);
+
   data.forEach(async (item) => {
     const email = item.Email;
     let locals = {
