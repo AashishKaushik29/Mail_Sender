@@ -26,7 +26,8 @@ app.post("/register", (req, res) => {
 app.post("/login", (req, res) => {
   user.login(req, res);
 });
-app.post("/sendmail", upload.single("uploaded_file"), mail.mailsend);
+
+app.post("/sendEmail", upload.single("uploaded_file"), mail.mailsend);
 
 app.listen(3333, () => {
   console.log("server runing on 3000 PORT");
