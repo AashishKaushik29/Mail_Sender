@@ -4,9 +4,10 @@ const app = express();
 const mail = require("./controllers/mailsend");
 const multer = require("multer");
 const path = require("path");
+const cors = require("cors");
 const connectDB = require("./config/db");
 const user = require("./controllers/user");
-
+app.use(cors());
 const storage = multer.diskStorage({
   destination: "./uploads/",
   filename: function (req, file, cb) {
