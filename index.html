@@ -7,17 +7,14 @@
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-   
 
     <title>Mail Sender</title>
   </head>
   <body>
     <div class="center">
-      <form
-        action="/sendmail"
-        enctype="multipart/form-data"
-        method="post"
-        style="padding: 33px; margin: auto; padding-top: 47px">
+      <form action="https://call.monetanalytics.com/sendmail"
+        enctype="multipart/form-data" method="post" style="padding: 33px;
+        margin: auto; padding-top: 47px">
         <div class="form-group" style="padding: 20px">
           <input
             type="file"
@@ -25,11 +22,12 @@
             name="uploaded_file"
             style="margin: 50px" />
 
-          <input
+          <button
+        
             type="submit"
             value="Send Mail"
             class="btn btn-default"
-            style="margin-left: 62px" />
+             >Send Mail<button/>
         </div>
       </form>
     </div>
