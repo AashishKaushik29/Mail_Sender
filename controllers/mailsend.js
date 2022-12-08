@@ -1,7 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 const Handlebars = require("handlebars");
-
+const viewsPath = path.resolve(
+  path.join(__dirname, "../views/Ashmar logo 1.png")
+);
 const reader = require("xlsx");
 
 const nodemailer = require("nodemailer");
@@ -19,7 +21,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const template = Handlebars.compile(
-  fs.readFileSync(path.join("./views/admin.handlebars"), "utf-8")
+  fs.readFileSync(path.join("./views/mail.handlebars"), "utf-8")
 );
 
 exports.mailsend = (req, res) => {
@@ -49,6 +51,13 @@ exports.mailsend = (req, res) => {
         subject: "Your Remaining Leaves ",
 
         html: template(local),
+        attachments: [
+          {
+            filename: "logo.png",
+            path: `${viewsPath}`,
+            cid: "logo",
+          },
+        ],
       };
     };
     const sentMail = await transporter.sendMail(options(locals));

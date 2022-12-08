@@ -31,5 +31,5 @@ app.post("/login", (req, res) => {
 app.post("/sendEmail",cors(), upload.single("uploaded_file"), mail.mailsend);
 
 app.listen(3333, () => {
-  console.log("server runing on 3000 PORT");
+  console.log("server runing on 3333 PORT");
 });
