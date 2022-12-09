@@ -19,7 +19,7 @@ const upload = multer({ storage: storage });
 app.use(express.json());
 connectDB();
 app.get("/", (req, res) => {
-  res.sendStatus(200).json({ message: "server working fine" });
+  res.sendStatus(200);
 });
 app.post("/register", (req, res) => {
   user.register(req, res);
