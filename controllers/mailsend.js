@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const template = Handlebars.compile(
-  fs.readFileSync(path.join("./views/mail.handlebars"), "utf-8")
+  fs.readFileSync(path.join("./views/mail2.handlebars"), "utf-8")
 );
 
 exports.mailsend = (req, res) => {
@@ -37,11 +37,14 @@ exports.mailsend = (req, res) => {
 
   data.forEach(async (item) => {
     const email = item.Email;
+    const date = new Date().toLocaleDateString();
+  
     let locals = {
       Name: item.Name,
       SL: item.SL || "Not Provided",
       PL: item.PL || "Not Provided",
       CL: item.CL || "Not Provided",
+      Date: date,
     };
 
     const options = (local) => {

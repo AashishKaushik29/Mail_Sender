@@ -19,7 +19,7 @@ const upload = multer({ storage: storage });
 app.use(express.json());
 connectDB();
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendStatus(200).json({ message: "server working fine" });
 });
 app.post("/register", (req, res) => {
   user.register(req, res);
@@ -28,7 +28,7 @@ app.post("/login", (req, res) => {
   user.login(req, res);
 });
 
-app.post("/sendEmail",cors(), upload.single("uploaded_file"), mail.mailsend);
+app.post("/sendEmail", cors(), upload.single("uploaded_file"), mail.mailsend);
 
 app.listen(3333, () => {
   console.log("server runing on 3333 PORT");
