@@ -25,45 +25,50 @@ const template = Handlebars.compile(
 );
 
 exports.mailsend = (req, res) => {
-  const file = reader.readFile(path.resolve("./uploads/leave.xlsx"));
-  let data = [];
-  const sheets = file.SheetNames;
-  for (let i = 0; i < sheets.length; i++) {
-    const temp = reader.utils.sheet_to_json(file.Sheets[file.SheetNames[i]]);
-    temp.forEach((res) => {
-      data.push(res);
-    });
-  }
+  try {
+    const file = reader.readFile(path.resolve("./uploads/leave.xlsx"));
+    let data = [];
+    const sheets = file.SheetNames;
+    for (let i = 0; i < sheets.length; i++) {
+      const temp = reader.utils.sheet_to_json(file.Sheets[file.SheetNames[i]]);
+      temp.forEach((res) => {
+        data.push(res);
+      });
+    }
 
-  data.forEach(async (item) => {
-    const email = item.Email;
-    const date = new Date().toLocaleDateString();
-  
-    let locals = {
-      Name: item.Name,
-      SL: item.SL || "Not Provided",
-      PL: item.PL || "Not Provided",
-      CL: item.CL || "Not Provided",
-      Date: date,
-    };
+    data.forEach(async (item) => {
+      const email = item.Email;
+      const date = new Date().toLocaleDateString();
 
-    const options = (local) => {
-      return {
-        from: "admin@monetlive.com",
-        to: email,
-        subject: "Your Remaining Leaves ",
-
-        html: template(local),
-        attachments: [
-          {
-            filename: "logo.png",
-            path: `${viewsPath}`,
-            cid: "logo",
-          },
-        ],
+      let locals = {
+        Name: item.Name,
+        SL: item.SL || "Not Provided",
+        PL: item.PL || "Not Provided",
+        CL: item.CL || "Not Provided",
+        Date: date,
       };
-    };
-    const sentMail = await transporter.sendMail(options(locals));
-  });
-  res.send({ message: "Mail Send Successfully" });
+
+      const options = (local) => {
+        return {
+          from: "admin@monetlive.com",
+          to: email,
+          subject: "Your Remaining Leaves ",
+
+          html: template(local),
+          attachments: [
+            {
+              filename: "logo.png",
+              path: `${viewsPath}`,
+              cid: "logo",
+            },
+          ],
+        };
+      };
+      const sentMail = await transporter.sendMail(options(locals));
+    });
+    res.send({ message: "Mail Send Successfully" });
+  } catch (error) {
+    res.send({ message: "Error: " + error.message });
+    console.log(error.message);
+  }
 };
