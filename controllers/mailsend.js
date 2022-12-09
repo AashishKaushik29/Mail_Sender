@@ -65,5 +65,5 @@ exports.mailsend = (req, res) => {
     };
     const sentMail = await transporter.sendMail(options(locals));
   });
-  res.send({ message: " mail send succesfully" });
+  res.send({ message: "Mail Send Successfully" });
 };
