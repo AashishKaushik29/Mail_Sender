@@ -10,8 +10,8 @@
   <div id="first-container" style="
       margin:auto;
       max-width: 600px; 
-      max-hight:800px;
-      padding: 2% 4%;
+      {{!-- max-hight:1000px; --}}
+      padding: 1% 4% 14% 4%;
       background-repeat:no-repeat;
       background-size:100% 50%;
       background-color:white;
@@ -21,17 +21,19 @@
       #c850c0 46%,
       #ffcc70 100%
       );">
-    <div>
+    {{!-- <div>
       <p style="display: inline-block;margin:0% 0% 0% 80%; color:white; ">{{Date}}</p>
-    </div>
+    </div> --}}
     <img src="cid:logo" style=" height: 73px;
         width: 237px;
         display: inline-block
         " />
     <div style="
+        
         height: 100%;
         width: 100%;
-        padding:10px 0;
+        
+        margin:1% 1% 1% 0%;
         background-color: #fff;
         border-radius: 3%; text-align:center;">
       <p>
@@ -40,18 +42,18 @@
       <p style="text-align: left; font-size: large; margin:0 5% 0">
         Hello {{Name}}, <br><br>
         Remaining Leaves as of Today <br>
-      <table style="width:57%; padding-left:4%; font-size:15px;">
+      <table style="width:60%; padding-left:4%; font-size:15px;">
         <tr>
-          <td style="width:50%;">Casual Leave (CL)</td>
-          <td style="width:50%;"> {{CL}}</td>
+          <td style="width:73%;">Casual Leave (CL)</td>
+          <td style="width:27%;"> {{CL}}</td>
         </tr>
         <tr>
-          <td style="width:50%;">Sick Leave (SL)</td>
-          <td style="width:50%;"> {{SL}}</td>
+          <td style="width:73%;">Sick Leave (SL)</td>
+          <td style="width:27%;"> {{SL}}</td>
         </tr>
         <tr>
-          <td style="width:50%;">Paid Leave (PL)</td>
-          <td style="width:50%;"> {{PL}}</td>
+          <td style="width:73%;">Paid Leave (PL)</td>
+          <td style="width:27%;"> {{PL}}</td>
         </tr>
       </table>
       <br />
