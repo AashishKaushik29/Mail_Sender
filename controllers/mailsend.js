@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const Handlebars = require("handlebars");
+const { unlink } = require("node:fs");
 const viewsPath = path.resolve(
   path.join(__dirname, "../views/Ashmar logo 1.png")
 );
@@ -65,6 +66,10 @@ exports.mailsend = (req, res) => {
         };
       };
       const sentMail = await transporter.sendMail(options(locals));
+    });
+    unlink(path.resolve("./uploads/leave.xlsx"), (err) => {
+      if (err) throw err;
+      console.log("path/file.txt was deleted");
     });
     res.send({ message: "Mail Send Successfully" });
   } catch (error) {
