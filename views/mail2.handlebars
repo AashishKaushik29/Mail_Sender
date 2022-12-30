@@ -11,9 +11,9 @@
       margin:auto;
       max-width: 600px; 
       {{!-- max-hight:1000px; --}}
-      padding: 1% 4% 14% 4%;
+      padding: 1% 4% 5% 4%;
       background-repeat:no-repeat;
-      background-size:100% 50%;
+      {{!-- background-size:100% 50%; --}}
       background-color:white;
       background-image: linear-gradient(
       43deg,
@@ -21,9 +21,9 @@
       #c850c0 46%,
       #ffcc70 100%
       );">
-    {{!-- <div>
-      <p style="display: inline-block;margin:0% 0% 0% 80%; color:white; ">{{Date}}</p>
-    </div> --}}
+    <div >
+      <p style="display: inline-block;margin:0% 0% 0% 80%;  color:white; ">{{Date}}</p>
+    </div>
     <img src="cid:logo" style=" height: 73px;
         width: 237px;
         display: inline-block
@@ -36,12 +36,14 @@
         margin:1% 1% 1% 0%;
         background-color: #fff;
         border-radius: 3%; text-align:center;">
-      <p>
+      <p style="padding-top: 1%;">
       <h1>Remaining Leaves</h1>
       <br></p>
+      
+       {{!-- <p style="text-align:right;">Date</p> --}}
       <p style="text-align: left; font-size: large; margin:0 5% 0">
-        Hello {{Name}}, <br><br>
-        Remaining Leaves as of Today <br>
+        Hello {{Name}},  <br><br>
+        Remaining Leaves as of Today <br></p>
       <table style="width:60%; padding-left:4%; font-size:15px;">
         <tr>
           <td style="width:73%;">Casual Leave (CL)</td>
@@ -61,7 +63,7 @@
         Refer to HR Policy for Utilization of these leaves
       </p>
       <div style="text-align:center">
-        <p style="font-size: small; color: #666;">
+        <p style="font-size: small; color: #666;padding:3%; " >
           If you have any questions, feel free message us at <br>
           <a href="mailto:anand@monetnetworks.com">anand@monetnetworks.com</a>. All right reserved. Update email
           preferences or .

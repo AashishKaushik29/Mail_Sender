@@ -16,8 +16,9 @@ const transporter = nodemailer.createTransport({
 
   service: "gmail",
   auth: {
-    user: "admin@monetlive.com",
-    pass: "xnfoogozwbfoemgm",
+    user: "admin@ashmar.in",
+    // pass: "xnfoogozwbfoemgm",
+    pass: "Ansuman_1",
   },
 });
 
@@ -38,6 +39,7 @@ exports.mailsend = (req, res) => {
     }
 
     data.forEach(async (item) => {
+      console.log(item);
       const email = item.Email;
       const date = new Date().toLocaleDateString();
 
@@ -51,7 +53,7 @@ exports.mailsend = (req, res) => {
 
       const options = (local) => {
         return {
-          from: "admin@monetlive.com",
+          from: "admin@ashmar.in",
           to: email,
           subject: "Your Remaining Leaves ",
 
