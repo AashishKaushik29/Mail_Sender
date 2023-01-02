@@ -16,8 +16,9 @@ const transporter = nodemailer.createTransport({
 
   service: "gmail",
   auth: {
-    user: "admin@ashmar.in",
+    // user: "admin@monetlive.com",
     // pass: "xnfoogozwbfoemgm",
+    user: "admin@ashmar.in",
     pass: "Ansuman_1",
   },
 });
@@ -38,7 +39,7 @@ exports.mailsend = (req, res) => {
       });
     }
 
-    data.forEach(async (item) => {
+    data.forEach(async (item, index) => {
       console.log(item);
       const email = item.Email;
       const date = new Date().toLocaleDateString();
@@ -50,7 +51,6 @@ exports.mailsend = (req, res) => {
         CL: item.CL || "Not Provided",
         Date: date,
       };
-
       const options = (local) => {
         return {
           from: "admin@ashmar.in",
@@ -67,13 +67,25 @@ exports.mailsend = (req, res) => {
           ],
         };
       };
-      const sentMail = await transporter.sendMail(options(locals));
+      setTimeout(() => {
+        const sentMail = transporter.sendMail(
+          options(locals),
+          function (error, info) {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log("Email sent" + info.response);
+            }
+          }
+        );
+      }, 1000 * index);
     });
+
     unlink(path.resolve("./uploads/leave.xlsx"), (err) => {
       if (err) throw err;
       console.log("path/file.txt was deleted");
     });
-    res.send({ message: "Mail Send Successfully" });
+    res.send({ message: "Mail Sending " });
   } catch (error) {
     res.send({ message: "Error: " + error.message });
     console.log(error.message);
